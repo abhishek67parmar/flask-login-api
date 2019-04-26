@@ -1,3 +1,4 @@
+import os
 from flask import Flask,jsonify
 from flask_restful import Api
 from resources.UserResource import UserLogin, UserRegistration, LogoutAccessToken, LogoutRefreshToken, TokenRefresh, AllUsers, SecretResource
@@ -10,7 +11,7 @@ app = Flask(__name__)
 api= Api(app)
 jwt = JWTManager(app)
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///app.db'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL','sqlite:///app.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATION']= False
 app.config['SECRET_KEY']= 'SOMETHING-COMPLEX'
 app.config['JWT_SECRET_KEY'] = 'SOM3TH!NG-V3RY-COMPL3X'
@@ -18,9 +19,9 @@ app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECK']= ['access','refresh']
 
 
-@app.before_first_request
-def create_table():
-    db.create_all()
+# @app.before_first_request
+# def create_table():
+#     db.create_all()
 
 @jwt.token_in_blacklist_loader
 def check_if_token_in_blacklist(decrypted_token):
@@ -40,5 +41,4 @@ api.add_resource(SecretResource,'/SecretResource')
 if __name__ =="__main__":
     from db import db
     db.init_app(app)
-
     app.run()
