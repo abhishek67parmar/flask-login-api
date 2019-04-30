@@ -32,6 +32,13 @@ passlib (To make password more secure)
   - it is used when access_token is expired after 15 min
   - add Authorization (Bearer refresh_token) in request header
 
-#### 7. /SecretResource (get)
-  - To test login - logout functionality
-  - add Authorization (Bearer access_token) in request header
+#### 7. /employee/<string:id>
+  - add Authorization (Bearer access_token) in request header for all below 4 operations
+  - emp_id is given endpoint itself
+  -  **get**: gives employee detail
+  -  **post**: send emp_name and city to add
+  -  **push**: send emp_name and city to update
+  -  **delete**: delete given employee
+
+#### 8. /allEmployee
+  - returns all employees 
