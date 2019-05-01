@@ -1,7 +1,7 @@
 import os
 from flask import Flask,jsonify
 from flask_restful import Api
-from resources.UserResource import UserLogin, UserRegistration, LogoutAccessToken, LogoutRefreshToken, TokenRefresh, AllUsers, SecretResource
+from resources.UserResource import UserLogin, UserRegistration, LogoutAccessToken, LogoutRefreshToken, TokenRefresh, AllUsers
 from resources.employeeResource import Employee,EmployeeAll
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
