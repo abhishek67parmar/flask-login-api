@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<style type="text/css">
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+
+
+
+		.bg-image {
+		  /* The image used */
+			background-image: url("https://images.wallpaperscraft.com/image/smiles_happy_cheerful_121653_1280x720.jpg");
+
+		  /* Add the blur effect */
+		  filter: blur(5px);
+		  -webkit-filter: blur(5px);
+
+		  /* Full height */
+		  height: 100%;
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		}
+
+		/* Position text in the middle of the page/image */
+		.bg-text {
+		  background-color: rgb(0,0,0); /* Fallback color */
+		  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+		  color: white;
+		  font-weight: bold;
+		  border: 3px solid #f1f1f1;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  z-index: 2;
+		  width: 80%;
+		  padding: 20px;
+		  text-align: center;
+		}
+		.submitbutton{
+        height:50px;
+        width:200px;
+        background: none;
+				border: 3px solid #f1f1f1;
+        color:white;
+        border-radius:4px;
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
+        font-weight:bolder;
+        font-size:24px;
+				margin-top: 40px;
+
+</style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="bg-text">
+  {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
