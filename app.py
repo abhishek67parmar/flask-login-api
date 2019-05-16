@@ -29,7 +29,7 @@ def index():
 @app.route('/charge', methods=['POST'])
 def charge():
     # Amount in cents
-    amount = 5000
+    amount = int(request.form['amt'])*100
 
     customer = stripe.Customer.create(
         email=request.form['stripeEmail'],
@@ -43,7 +43,7 @@ def charge():
         description='Donation'
     )
 
-    return render_template('charge.html', amount=amount)
+    return render_template('Charge.html', amount=amount/100)
 
 
 # @app.before_first_request

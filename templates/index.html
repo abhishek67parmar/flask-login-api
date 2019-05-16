@@ -3,17 +3,22 @@
 <h1 style="font-size:50px">Happy NGO</h1>
 <h2>Your small donation can bring big smile&#128513.</h2>
 <form action="/charge" method="post">
+  <input type="text" name="amt" placeholder="Minimun 50" id="amt" onkeyup="money()">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="{{ key }}"
               data-description="Donate me :)"
-              data-amount="5000"
               data-locale="auto"
               data-image="https://banner2.kisspng.com/20180523/tha/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc6a3a10.0013931115270566044351.jpg"
               data-name="Happy NGO"
               data-currency="inr"></script>
       <script>
           document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+          function money() {
+            console.log(document.getElementById("submitbutton").value);
+            var x = document.getElementById("amt");
+            document.getElementById("submitbutton").innerHTML = "Donate "+x.value+"₹";
+          }
       </script>
-      <button type="submit" class="submitbutton" >Donate 50₹</button>
+      <button type="submit" class="submitbutton" id="submitbutton" >Donate</button>
     </form>
   {% endblock %}
